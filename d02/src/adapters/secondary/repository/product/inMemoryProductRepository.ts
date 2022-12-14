@@ -1,9 +1,9 @@
-import { ProductGateway } from '../../core/gateways/productGateway'
-import { Product } from '../../core/entities/product'
-import { UUIDGenerator } from '../../core/gateways/UUIDGenerator'
-import { CreateProductDTO } from '../../core/dto/createProductDTO'
+import { ProductRepository } from './productRepository'
+import { Product } from '../../../../core/entities/product'
+import { UUIDGenerator } from '../../services/UUIDGenerator'
+import { CreateProductDTO } from '../../../primary/dto/createProductDTO'
 
-export class InMemoryProductGateway implements ProductGateway {
+export class InMemoryProductRepository implements ProductRepository {
   private products: Array<Product> = []
   private uuidGenerator: UUIDGenerator
 

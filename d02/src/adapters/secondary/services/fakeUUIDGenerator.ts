@@ -1,4 +1,4 @@
-import { UUIDGenerator } from '../../core/gateways/UUIDGenerator'
+import { UUIDGenerator } from './UUIDGenerator'
 
 export class FakeUUIDGenerator implements UUIDGenerator {
   private uuid: string

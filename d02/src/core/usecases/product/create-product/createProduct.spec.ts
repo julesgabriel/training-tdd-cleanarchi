@@ -1,13 +1,13 @@
-import { Product } from '../../entities/product'
-import { useProductStore } from '../../../store/productStore'
+import { Product } from '../../../entities/product'
+import { useProductStore } from '../../../../store/productStore'
 import { createPinia, setActivePinia } from 'pinia'
 import { createProduct } from './createProduct'
-import { InMemoryProductGateway } from '../../../adapters/secondary/inMemoryProductGateway'
-import { FakeUUIDGenerator } from '../../../adapters/secondary/fakeUUIDGenerator'
-import { CreateProductDTO } from '../../dto/createProductDTO'
+import { InMemoryProductRepository } from '../../../../adapters/secondary/repository/product/inMemoryProductRepository'
+import { FakeUUIDGenerator } from '../../../../adapters/secondary/services/fakeUUIDGenerator'
+import { CreateProductDTO } from '../../../../adapters/primary/dto/createProductDTO'
 
 describe('Create product', () => {
-  let productGateway: InMemoryProductGateway
+  let productGateway: InMemoryProductRepository
   const pantalon: Product = {
     id: 'jkl789',
     name: 'Pantalon',
@@ -22,7 +22,7 @@ describe('Create product', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
     uuidGenerator = new FakeUUIDGenerator()
-    productGateway = new InMemoryProductGateway(uuidGenerator)
+    productGateway = new InMemoryProductRepository(uuidGenerator)
   })
   describe('There is no previous product', () => {
     describe('Create an pantalon', () => {

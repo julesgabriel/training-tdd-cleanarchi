@@ -1,4 +1,4 @@
-import { listAllProductsVM } from './listAllProductsVM'
+import { listAllProductsVM } from './listAllProductsPresenter'
 import { useProductStore } from '../../../../store/productStore'
 import { createPinia, setActivePinia } from 'pinia'
 

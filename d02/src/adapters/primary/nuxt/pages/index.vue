@@ -12,13 +12,13 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref } from '../../../../../.nuxt/imports'
-import { listAllProducts } from '../../../../core/usecases/list-all-products/listAllProducts'
-import { listAllProductsVM } from '../../view-models/list-all-products-vm/listAllProductsVM'
-import productGateway from '../../../../../dependencies/productGateway'
-import { createProductVM } from '../../view-models/create-product-vm/createProductVM'
+import { listAllProducts } from '../../../../core/usecases/product/list-all-products/listAllProducts'
+import { listAllProductsVM } from '../../presenters/list-all-products/listAllProductsPresenter'
+import populateInMemoryWithProducts from '../../../secondary/repository/product/utils/populateInMemoryWithProducts'
+import { createProductVM } from '../../presenters/create-product/createProductVM'
 
 onMounted(() => {
-  listAllProducts(productGateway)
+  listAllProducts(populateInMemoryWithProducts)
 })
 
 const handleNameChanged = (e: any) => {

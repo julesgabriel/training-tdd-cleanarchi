@@ -1,15 +1,15 @@
-import { useProductStore } from '../../../store/productStore'
+import { useProductStore } from '../../../../store/productStore'
 import { createPinia, setActivePinia } from 'pinia'
 import { listAllProducts } from './listAllProducts'
-import { InMemoryProductGateway } from '../../../adapters/secondary/inMemoryProductGateway'
-import { Product } from '../../entities/product'
-import { FakeUUIDGenerator } from '../../../adapters/secondary/fakeUUIDGenerator'
+import { InMemoryProductRepository } from '../../../../adapters/secondary/repository/product/inMemoryProductRepository'
+import { Product } from '../../../entities/product'
+import { FakeUUIDGenerator } from '../../../../adapters/secondary/services/fakeUUIDGenerator'
 
 describe('List all products', () => {
-  let productGateway: InMemoryProductGateway
+  let productGateway: InMemoryProductRepository
   beforeEach(() => {
     setActivePinia(createPinia())
-    productGateway = new InMemoryProductGateway(new FakeUUIDGenerator())
+    productGateway = new InMemoryProductRepository(new FakeUUIDGenerator())
   })
   it('should have [] when there is no product', async () => {
     await whenListAllProducts()
